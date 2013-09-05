@@ -12,10 +12,10 @@ namespace HTMLKit;
  *   $div->toHTML();
  *
  *   <!-- O exemplo acima irá resultar: -->
- *   <div>
+ *   <article>
  *     <p>Hello World</p>
- *   </div>
- * 
+ *   </article>
+ *
  * </code>
  *
  * @author thiago
