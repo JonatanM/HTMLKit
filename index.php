@@ -8,7 +8,6 @@
    */
   require_once './SplClassLoader.class.php';
 
-
     /**
      * Carrega classes com namespace HTMLKit e extensão .class.php
      */
@@ -19,8 +18,12 @@
     /**
      * Carrega classes auxiliares sem namespace.
      */
+    $loader_classes = new SplClassLoader();
+    $loader_classes->setFileExtension(".class.php");
+    $loader_classes->register();
+
     $loader_classes_simples = new SplClassLoader();
-    $loader_classes_simples->setFileExtension(".class.php");
+    $loader_classes_simples->setFileExtension(".php");
     $loader_classes_simples->register();
 
     $modelPages = new ModelPages();

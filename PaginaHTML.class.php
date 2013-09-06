@@ -40,11 +40,6 @@ class PaginaHTML {
   private $content = "";
 
   public function __construct() {
-    $this->setCss("tes1.css");
-    $this->setCss("tes2.css");
-    $this->setJavascript("js1.js");
-    $this->setJavascript("js2.js");
-
     $this->setTitle("HTMLKit");
   }
 
@@ -117,11 +112,6 @@ class PaginaHTML {
    */
   public function setContent($content) {
     $this->content = $content;
-  }
-
-
-  public function padrao(){
-
   }
 
   public function getDoctype() {
@@ -199,7 +189,8 @@ class PaginaHTML {
   }
 
   public function __destruct() {
-    echo $this->__toString();
+    //$this->__toString();
+    //echo $this->__toString();
   }
 
 }

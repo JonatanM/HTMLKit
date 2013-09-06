@@ -226,7 +226,7 @@ class HTMLElement {
       $s .= "\n";
     }
 
-    $s .= "<" . $this->getTag();
+    $s .= "\t<" . $this->getTag();
 
     if (!is_null($this->getId())) {
       $s .= " id='" . $this->getId() . "'";
@@ -259,8 +259,9 @@ class HTMLElement {
    */
   protected function insertContent(){
 
-    $s = "";
+    $s = "\n";
     if(!is_null($this->getValue())){
+      $s .= "\t";
       $s .= $this->getValue();
     }
 
@@ -279,7 +280,7 @@ class HTMLElement {
    * @return String
    */
   protected function closeTag(){
-    return "</" . $this->getTag() . ">";
+    return "\t</" . $this->getTag() . ">\n";
   }
 
 }
