@@ -3,15 +3,62 @@
   ini_set("display_errors", true);
   error_reporting(E_ALL);
 
+  /**
+   * Carrega Classe SplClassLoader PSR-0
+   */
   require_once './SplClassLoader.class.php';
-  $loader = new SplClassLoader("HTMLKit", "/var/www");
-  $loader->setFileExtension(".class.php");
-  $loader->register();
 
 
+    /**
+     * Carrega classes com namespace HTMLKit e extensão .class.php
+     */
+    $loader_html_kit = new SplClassLoader("HTMLKit", "/var/www/gitHTMLKit");
+    $loader_html_kit->setFileExtension(".class.php");
+    $loader_html_kit->register();
+
+    /**
+     * Carrega classes auxiliares sem namespace.
+     */
+    $loader_classes_simples = new SplClassLoader();
+    $loader_classes_simples->setFileExtension(".class.php");
+    $loader_classes_simples->register();
+
+    $modelPages = new ModelPages();
+
+    try{
+
+      $url = explode("/",$_REQUEST["p"]);
+      $nome_classe = $url[0];
+      if(isset($url[1]) && $url[1] != ""){
+          $nome_metodo = $url[1];
+
+          $rc = new ReflectionClass($nome_classe);
+          $rc->getMethod($nome_metodo);
+
+          $lista_metodos = $rc->getMethods();
+
+          foreach ($lista_metodos as $metodo) {
+              if ($metodo->getName() == $nome_metodo) {
+                $array_full = array_merge($_REQUEST, $_FILES);
+                $metodo->invoke($rc->newInstance(), $array_full);
+                break;
+              }
+          }
+      }
+
+    }
+    catch (ReflectionException $re){
+      $modelPages->aviso($re->getMessage());
+    }
+    catch (Exception $e){
+      $modelPages->perigo($e->getMessage());
+    }
+
+
+  /*
   $header = new HTMLKit\HTMLHeading("h1", "3");
   echo $header;
-  
+
   $elemento = new HTMLKit\HTMLElement("div");
   $elemento->setComment("comentario teste");
   $elemento->setName("teste");
@@ -44,6 +91,9 @@
 
   echo $list;
 
-
+  $header = new HTMLKit\HTMLHeader();
+  $header->addElements(new HTMLKit\HTMLHeading("Cabeçalho 2", 2));
+  echo $header;
+  */
 
 ?>
