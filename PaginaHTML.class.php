@@ -37,7 +37,7 @@ class PaginaHTML {
   private $css = array();
   private $javascript = array();
 
-  private $content = "";
+  private $content = array();
 
   public function __construct() {
     $this->setTitle("HTMLKit");
@@ -111,7 +111,7 @@ class PaginaHTML {
    * @param string $content
    */
   public function setContent($content) {
-    $this->content = $content;
+    $this->content[] = $content;
   }
 
   public function getDoctype() {
@@ -178,7 +178,14 @@ class PaginaHTML {
     $s .= "<body>";
     $s .= "\n";
     $s .= "\n";
-    $s .= $this->getContent();
+    $div = new HTMLKit\HTMLDiv();
+    $div->setClass("container");
+    foreach ($this->getContent() as $content){
+        $div->addElements($content);
+    }
+    $s .= $div;
+    //$s .= new HTMLKit\HTMLDiv($this->getContent(), "container");
+    //$s .= $this->getContent();
     $s .= "\n";
     $s .= "\n";
     $s .= "</body>";

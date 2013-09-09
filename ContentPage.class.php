@@ -33,39 +33,35 @@ class ContentPage extends PaginaHTML /*implements iContentPage*/{
           HTMLKit\HTMLNav $nav = null
   ) {
 
-    $this->setDiv(new HTMLKit\HTMLDiv());
-    $div = $this->getDiv();
-    $div->setId("container");
-
     $section = new HTMLKit\HTMLSection();
     $section->addElements($element);
     $this->setSection($section);
 
     if(!is_null($header)){
       $this->setHeader($header);
-      $div->addElements($this->getHeader());
+      $this->setContent($this->getHeader());
     }
 
-    $div->addElements($this->getSection());
+    $this->setContent($this->getSection());
 
     if(!is_null($aside)){
       $this->setAside($aside);
-      $div->addElements($this->getAside());
+      $this->setContent($this->getAside());
     }
 
     if(!is_null($footer)){
       $this->setFooter($footer);
-      $div->addElements($this->getFooter());
+      $this->setContent($this->getFooter());
     }
 
     if(!is_null($nav)){
       $this->setNav($nav);
-      $div->addElements($nav);
+      $this->setContent($nav);
     }
 
 
-    $this->setContent($div);
-    echo $this->__toString();
+    //$this->setContent($div);
+    //echo $this->__toString();
 
   }
 
@@ -165,6 +161,9 @@ class ContentPage extends PaginaHTML /*implements iContentPage*/{
     return $this->nav;
   }
 
+  public function __destruct() {
+      echo $this->__toString();
+  }
 
 
 }
