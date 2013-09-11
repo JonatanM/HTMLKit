@@ -12,11 +12,9 @@ const unordered = "ul";
  */
 class HTMLLists extends \HTMLKit\HTMLElement{
 
-  protected $list_itens = array();
-
   /**
    * Classe que representa o elemento HTML <ul></ul> ou <ol></ol>
-   * 
+   *
    * @param string $tag
    * @param string $class
    * @param string $id
@@ -31,48 +29,20 @@ class HTMLLists extends \HTMLKit\HTMLElement{
 
   /**
    *
-   * @param mixed $value
-   * @param mixed $index
+   * @param \HTMLKit\HTMLListItem $listItem
+   * @param type $class
+   * @param type $id
+   * @param type $name
+   * @param type $comment
+   * @param type $title
+   * @return \HTMLKit\HTMLDiv
    */
-  public function addListItem($value){
-      $this->list_itens[] = $value;
+  public function getDropdown() {
+    $div = new \HTMLKit\HTMLDiv();
+    $div->addElements($this);
+    $div->setClass("dropdown");
+    return $div;
   }
-
-  public function getListItens(){
-    return $this->list_itens;
-  }
-  /**
-  *
-  * @return string
-  */
-  public function __toString() {
-    $s = $this->openTag();
-    $s .= $this->insertContent();
-    $s .= $this->closeTag();
-    return $s;
-  }
-
-  /**
-  * Método responsável por preencher conteúdo em um HTML.
-  * @return string
-  */
- protected function insertContent(){
-
-    $s = "";
-    if(!is_null($this->getValue())){
-      $s .= $this->getValue();
-    }
-
-    if(count($this->getListItens() > 0)){
-      foreach ($this->getListItens() as $li) {
-        $s .= "<li>" . $li . "</li>";
-
-      }
-    }
-    return $s;
-
-  }
-
 
 }
 

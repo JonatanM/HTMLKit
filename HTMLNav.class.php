@@ -36,15 +36,43 @@ class HTMLNav extends \HTMLKit\HTMLElement {
    * @param String $title
    * @return \HTMLKit\HTMLElement $element
    */
-  function __construct(HTMLElement $element = null, $class = null, $id = null, $name = null, $comment = null, $title = null) {
-    throw new Exception("================   Implementar    =====================");
-
-    if(!is_null($element)){
-      $this->addElements($element);
+  public function __construct(HTMLLists $lists = null, $class = null, $id = null, $name = null, $comment = null, $title = null) {
+    $nav = parent::__construct("nav", $class, $id, $name, $comment, $title);
+    if(!is_null($lists)){
+      $nav->addElements($lists);
     }
-    return parent::__construct("nav", $class, $id, $name, $comment, $title);
+    return $nav;
   }
 
+  /**
+   *
+   * @param \HTMLKit\HTMLListItem $listItem
+   * @param type $value
+   * @param type $class
+   * @param type $id
+   * @param type $name
+   * @param type $comment
+   * @param type $title
+   * @return \HTMLKit\HTMLLink
+   */
+  public function dropdownNav(HTMLLists $lists) {
+    $drop = $lists->getDropdown();
+    $drop_elements = $drop->getElements();
+    $ul = $drop_elements[0];
+    $ul->setClass("dropdown-menu");
+    $span = new \HTMLKit\HTMLSpan("");
+    $span->setClass("caret");
+    $link = new \HTMLKit\HTMLLink("Drop ".$span, "#");
+
+    $link->addAtributes("data-toggle", "dropdown");
+
+    $li = new \HTMLKit\HTMLListItem();
+    $li->addElements($link);
+    $li->addElements($ul);
+    $li->setClass("dropdown");
+
+    return $li;
+  }
 
 }
 

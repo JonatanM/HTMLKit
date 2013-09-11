@@ -11,7 +11,7 @@
     /**
      * Carrega classes com namespace HTMLKit e extensão .class.php
      */
-    $loader_html_kit = new SplClassLoader("HTMLKit", "/var/www/");
+    $loader_html_kit = new SplClassLoader("HTMLKit", "/var/www/gitHTMLKit/");
     $loader_html_kit->setFileExtension(".class.php");
     $loader_html_kit->register();
 
@@ -30,11 +30,11 @@
 
     try{
 
-      
+
     if(!isset($_REQUEST["p"])){
         $modelPages->redirect("?p=Telas/home");
     }
-    
+
       $url = explode("/", $_REQUEST["p"]);
       $nome_classe = $url[0];
       if(isset($url[1]) && $url[1] != ""){

@@ -8,7 +8,7 @@ namespace HTMLKit;
  *
  * @author thiago
  */
-class HTMLElement {
+abstract class HTMLElement {
 
   private $class = null;
   private $id = null;
@@ -226,7 +226,7 @@ class HTMLElement {
       $s .= "\n";
     }
 
-    $s .= "\t<" . $this->getTag();
+    $s .= "<" . $this->getTag();
 
     if (!is_null($this->getId())) {
       $s .= " id='" . $this->getId() . "'";
@@ -259,9 +259,8 @@ class HTMLElement {
    */
   protected function insertContent(){
 
-    $s = "\n";
+    $s = "";
     if(!is_null($this->getValue())){
-      $s .= "\t";
       $s .= $this->getValue();
     }
 
@@ -269,7 +268,6 @@ class HTMLElement {
       foreach ($this->getElements() as $element) {
         $s .= $element;
       }
-      $s .= "\n";
     }
     return $s;
 
@@ -280,7 +278,7 @@ class HTMLElement {
    * @return String
    */
   protected function closeTag(){
-    return "\t</" . $this->getTag() . ">\n";
+    return "</" . $this->getTag() . ">\n";
   }
 
 }
