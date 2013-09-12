@@ -3,7 +3,7 @@
 namespace HTMLKit;
 
 /**
- * Classe que representa o elemento HTML <HTMLSection></HTMLSection>
+ * Classe que representa o elemento HTML <section></section>
  *
  * Exemplo:
  * <code>

@@ -29,6 +29,14 @@ class HTMLLists extends \HTMLKit\HTMLElement{
 
   /**
    *
+   * @param \HTMLKit\HTMLListItem $element
+   */
+  public function addElements(HTMLListItem $element) {
+    parent::addElements($element);
+  }
+
+  /**
+   *
    * @param \HTMLKit\HTMLListItem $listItem
    * @param type $class
    * @param type $id

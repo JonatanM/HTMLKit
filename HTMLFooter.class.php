@@ -3,7 +3,7 @@
 namespace HTMLKit;
 
 /**
- * Classe que representa o elemento HTML <div></div>
+ * Classe que representa o elemento HTML <footer></footer>
  *
  * Exemplo:
  * <code>
@@ -12,10 +12,10 @@ namespace HTMLKit;
  *   $div->toHTML();
  *
  *   <!-- O exemplo acima irá resultar: -->
- *   <div>
+ *   <footer>
  *     <p>Hello World</p>
- *   </div>
- * 
+ *   </footer>
+ *
  * </code>
  *
  * @author thiago

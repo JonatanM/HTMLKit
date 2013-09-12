@@ -2,7 +2,7 @@
 
 
 /**
- * Description of ModelPages
+ * Classe que contêm estruturas padrões para mensagens.
  *
  * @author thiago
  */

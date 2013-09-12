@@ -3,7 +3,7 @@
 namespace HTMLKit;
 
 /**
- * Description of HTMLStrong
+ * Classe que representa o elemento HTML <strong></strong>
  *
  * @author thiago
  */

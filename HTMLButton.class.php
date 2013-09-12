@@ -22,6 +22,7 @@ class HTMLButton extends \HTMLKit\HTMLElement {
    */
   function __construct($title, $class = null, $id = null, $name = null, $comment = null) {
     $this->setValue($title);
+    $this->addAtributes("type", "button");
     return parent::__construct("button", $class, $id, $name, $comment, $title);
   }
 

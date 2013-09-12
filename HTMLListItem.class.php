@@ -2,9 +2,24 @@
 
 namespace HTMLKit;
 
-
 /**
- * Description of HTMLList
+ * Classe que representa o elemento HTML <li></li>
+ *
+ * Exemplo:
+ * <code>
+ *  $li = new HTMLKit\HTMLListItem(new HTMLKit\HTMLLink("Exemplo", "#"));
+ *  $ul = new HTMLKit\HTMLLists(HTMLKit\unordered, "nav nav-pills nav-stacked");
+ *  $ul->addElements($li);
+ *  $this->setContent($ul);
+ *   <!-- O exemplo acima irá resultar: -->
+ *
+ * <ul>
+ *  <li>
+ *    <a href="#">Exemplo</a>
+ *  </li>
+ * </ul>
+ *
+ * </code>
  *
  * @author thiago
  */
