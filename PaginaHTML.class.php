@@ -181,11 +181,11 @@ class PaginaHTML {
     $div = new HTMLKit\HTMLDiv();
     $div->setClass("container");
     foreach ($this->getContent() as $content){
+      if(!is_null($content)){
         $div->addElements($content);
+      }
     }
     $s .= $div;
-    //$s .= new HTMLKit\HTMLDiv($this->getContent(), "container");
-    //$s .= $this->getContent();
     $s .= "\n";
     $s .= "\n";
     $s .= "</body>";
@@ -193,11 +193,6 @@ class PaginaHTML {
     $s .= "</html>";
 
     return $s;
-  }
-
-  public function __destruct() {
-    //$this->__toString();
-    //echo $this->__toString();
   }
 
 }

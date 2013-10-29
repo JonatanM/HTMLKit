@@ -1,6 +1,25 @@
 <?php
 
 /**
+ * Carrega classes com namespace HTMLKit e extensão .class.php
+ */
+$loader_html_kit = new SplClassLoader("HTMLKit", "/var/www/gitHTMLKit/");
+$loader_html_kit->setFileExtension(".class.php");
+$loader_html_kit->register();
+
+/**
+ * Carrega classes auxiliares sem namespace.
+ */
+$loader_classes = new SplClassLoader();
+$loader_classes->setFileExtension(".class.php");
+$loader_classes->register();
+
+$loader_classes_simples = new SplClassLoader();
+$loader_classes_simples->setFileExtension(".php");
+$loader_classes_simples->register();
+
+
+/**
  * SplClassLoader implementation that implements the technical interoperability
  * standards for PHP 5.3 namespaces and class names.
  *

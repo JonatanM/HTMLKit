@@ -28,14 +28,18 @@ class ContentPage extends PaginaHTML /*implements iContentPage*/{
    * @param HTMLKit\HTMLAside $aside
    */
   public function __construct(
-          HTMLKit\HTMLElement $element, HTMLKit\HTMLHeader $header = null,
-          HTMLKit\HTMLFooter $footer = null, HTMLKit\HTMLAside $aside = null,
+          HTMLKit\HTMLElement $element = null,
+          HTMLKit\HTMLHeader $header = null,
+          HTMLKit\HTMLFooter $footer = null,
+          HTMLKit\HTMLAside $aside = null,
           HTMLKit\HTMLNav $nav = null
   ) {
 
-    $section = new HTMLKit\HTMLSection();
-    $section->addElements($element);
-    $this->setSection($section);
+    if(!is_null($element)){
+      $section = new HTMLKit\HTMLSection();
+      $section->addElements($element);
+      $this->setSection($section);
+    }
 
     if(!is_null($header)){
       $this->setHeader($header);

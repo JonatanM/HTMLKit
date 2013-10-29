@@ -10,21 +10,29 @@ namespace HTMLKit;
 class HTMLInput extends \HTMLKit\HTMLElement {
 
   protected $default_value = null;
+  protected $type = null;
+  protected $placeholder = null;
 
   /**
    *
-   * @param String $default_value
-   * @param String $class
-   * @param String $id
-   * @param String $name
-   * @param String $comment
-   * @param String $title
-   * @return \HTMLKit\HTMLElement $element
+   * @param string $name
+   * @param string $default_value
+   * @param string $class
+   * @param string $id
+   * @param string $type
+   * @param string $comment
+   * @param string $title
+   * @return \HTMLKit\HTMLElement
    */
-  public function __construct($name, $default_value = null, $class = null, $id = null, $comment = null, $title = null) {
+  public function __construct($name, $default_value = null, $class = null, $id = null, $type = null, $comment = null, $title = null) {
     if(!is_null($default_value)){
       $this->setDefault_value($default_value);
     }
+    if(is_null($type)){
+      $this->setType("text");
+      $this->addAtributes("type", $this->getType());
+    }
+
     return parent::__construct("input", $class, $id, $name, $comment, $title);
   }
 
@@ -43,6 +51,40 @@ class HTMLInput extends \HTMLKit\HTMLElement {
   public function setDefault_value($default_value) {
     $this->default_value = $default_value;
     $this->addAtributes("value", $default_value);
+  }
+
+  /**
+   *
+   * @return String
+   */
+  public function getType() {
+    return $this->type;
+  }
+
+  /**
+   *
+   * @param String $type
+   */
+  public function setType($type) {
+    $this->type = $type;
+    $this->addAtributes("type", $this->getType());
+  }
+
+  /**
+   *
+   * @return string
+   */
+  public function getPlaceholder() {
+    return $this->placeholder;
+  }
+
+  /**
+   *
+   * @param string $placeholder
+   */
+  public function setPlaceholder($placeholder) {
+    $this->placeholder = $placeholder;
+    $this->addAtributes("placeholder", $placeholder);
   }
 
 
