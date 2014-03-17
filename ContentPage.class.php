@@ -1,5 +1,6 @@
 <?php
 
+namespace HTMLKit;
 
 /**
  * Classe responsável por criar estrutura HTML5 para conteúdos.
@@ -11,7 +12,7 @@
  *
  * @author thiago
  */
-class ContentPage extends PaginaHTML /*implements iContentPage*/{
+class ContentPage extends \HTMLKit\PaginaHTML {
 
   private $header;
   private $footer;
@@ -22,21 +23,21 @@ class ContentPage extends PaginaHTML /*implements iContentPage*/{
 
   /**
    *
-   * @param HTMLKit\HTMLElement $element
-   * @param HTMLKit\HTMLHeader $header
-   * @param HTMLKit\HTMLFooter $footer
-   * @param HTMLKit\HTMLAside $aside
+   * @param \HTMLKit\HTMLElement $element
+   * @param \HTMLKit\HTMLHeader $header
+   * @param \HTMLKit\HTMLFooter $footer
+   * @param \HTMLKit\HTMLAside $aside
    */
   public function __construct(
-          HTMLKit\HTMLElement $element = null,
-          HTMLKit\HTMLHeader $header = null,
-          HTMLKit\HTMLFooter $footer = null,
-          HTMLKit\HTMLAside $aside = null,
-          HTMLKit\HTMLNav $nav = null
+          \HTMLKit\HTMLElement $element = null,
+          \HTMLKit\HTMLHeader $header = null,
+          \HTMLKit\HTMLFooter $footer = null,
+          \HTMLKit\HTMLAside $aside = null,
+          \HTMLKit\HTMLNav $nav = null
   ) {
 
     if(!is_null($element)){
-      $section = new HTMLKit\HTMLSection();
+      $section = new \HTMLKit\HTMLSection();
       $section->addElements($element);
       $this->setSection($section);
     }

@@ -1,6 +1,6 @@
 <?php
 
-class Telas extends ContentPage{
+class Telas extends \HTMLKit\ContentPage{
 
   public function __construct() {
     $this->setCss("extras/bootstrap-3.0.0/css/bootstrap.min.css");
@@ -10,6 +10,7 @@ class Telas extends ContentPage{
   }
 
   public function home(){
+
     $header = new HTMLKit\HTMLHeader(new HTMLKit\HTMLHeading("PHP - HTMLKit"));
     $header->setClass("page-header");
     $footer = new HTMLKit\HTMLFooter(new HTMLKit\HTMLParagraph("Desenvolvido por: Thiago Thomaz"));

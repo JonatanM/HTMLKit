@@ -1,5 +1,7 @@
 <?php
 
+namespace HTMLKit;
+
 /**
  * Classe responsável por condigurar estrutura básica padrão de um documento HTML.
  *
@@ -178,7 +180,7 @@ class PaginaHTML {
     $s .= "<body>";
     $s .= "\n";
     $s .= "\n";
-    $div = new HTMLKit\HTMLDiv();
+    $div = new \HTMLKit\HTMLDiv();
     $div->setClass("container");
     foreach ($this->getContent() as $content){
       if(!is_null($content)){

@@ -6,7 +6,7 @@
   /**
    * Carrega Classe SplClassLoader PSR-0
    */
-  require_once './SplClassLoader.class.php';
+  require_once './LoadHTMLKit.class.php';
 
     $modelPages = new ModelPages();
 
